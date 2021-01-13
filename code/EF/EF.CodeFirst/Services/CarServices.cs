@@ -10,12 +10,12 @@ namespace EF.CodeFirst.Services
 {
     public class CarServices
     {
-        public static string connectionString = "Data Source=.;Initial Catalog=CarsDB;Integrated Security=True";
-        private static ApplicationDbContext dbContext;
-        public CarServices(ApplicationDbContext _dbContext)
-        {
-            dbContext = _dbContext;
-        }
+        //public static string connectionString = "Data Source=.;Initial Catalog=CarsDB;Integrated Security=True";
+        private static ApplicationDbContext dbContext = new ApplicationDbContext();
+        //public CarServices(ApplicationDbContext _dbContext)
+        //{
+        //    dbContext = _dbContext;
+        //}
         //C
         public static Car AddCar(AddCar addCar)
         {
@@ -65,6 +65,7 @@ namespace EF.CodeFirst.Services
             if (carToDelete != null)
             {
                 dbContext.Remove(carToDelete);
+                dbContext.SaveChanges();
             }
             return $"Car with ID {id} has been deleted.";
         }
