@@ -1,63 +1,65 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basics", "Basics", "{364DCF26-243A-4FDE-8781-BE0BA8E5330A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "Basics\ConsoleApp\ConsoleApp.csproj", "{DD68D018-7426-4102-B89E-FB23D8781D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "Basics\ConsoleApp\ConsoleApp.csproj", "{DD68D018-7426-4102-B89E-FB23D8781D5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Library", "Basics\Currency.Library\Currency.Library.csproj", "{CB024C03-4B39-4836-BB81-F9A53A054FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Currency.Library", "Basics\Currency.Library\Currency.Library.csproj", "{CB024C03-4B39-4836-BB81-F9A53A054FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Currency.Project", "Basics\Currency.Project\Currency.Project.csproj", "{039BC382-56EF-42EA-8698-8EB96C8E20EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Currency.Project", "Basics\Currency.Project\Currency.Project.csproj", "{039BC382-56EF-42EA-8698-8EB96C8E20EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateTask", "Basics\DelegateTask\DelegateTask.csproj", "{9CB08215-AA89-4DDE-A16A-1694062B4BA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DelegateTask", "Basics\DelegateTask\DelegateTask.csproj", "{9CB08215-AA89-4DDE-A16A-1694062B4BA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delegation", "Basics\Delegation\Delegation.csproj", "{445B2AB6-006A-4196-891E-8B96922BCAE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Delegation", "Basics\Delegation\Delegation.csproj", "{445B2AB6-006A-4196-891E-8B96922BCAE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventExample", "Basics\EventExample\EventExample.csproj", "{B4EEC7C5-3BDB-4A12-BC86-60BCDED67E2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventExample", "Basics\EventExample\EventExample.csproj", "{B4EEC7C5-3BDB-4A12-BC86-60BCDED67E2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHandlerSample", "Basics\EventHandlerSample\EventHandlerSample.csproj", "{9CF3640C-1B5D-4676-B3AC-C9091E9DF7B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHandlerSample", "Basics\EventHandlerSample\EventHandlerSample.csproj", "{9CF3640C-1B5D-4676-B3AC-C9091E9DF7B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling", "Basics\ExceptionHandling\ExceptionHandling.csproj", "{51D8A43C-E4A1-401D-8725-73BF15CF38A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExceptionHandling", "Basics\ExceptionHandling\ExceptionHandling.csproj", "{51D8A43C-E4A1-401D-8725-73BF15CF38A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunStuff", "Basics\FunStuff\FunStuff.csproj", "{1357AAC2-976A-4A06-BDAC-7E1EB0862BE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunStuff", "Basics\FunStuff\FunStuff.csproj", "{1357AAC2-976A-4A06-BDAC-7E1EB0862BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericsAndCollections", "Basics\GenericsAndCollections\GenericsAndCollections.csproj", "{396BF34C-68BE-4A02-88D6-7906C8EBFF24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenericsAndCollections", "Basics\GenericsAndCollections\GenericsAndCollections.csproj", "{396BF34C-68BE-4A02-88D6-7906C8EBFF24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LINQy", "Basics\LINQy\LINQy.csproj", "{A030677C-5535-4640-8504-86FD2D980B7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQy", "Basics\LINQy\LINQy.csproj", "{A030677C-5535-4640-8504-86FD2D980B7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUGETRef", "Basics\NUGETRef\NUGETRef.csproj", "{69F152CB-6F85-4F4A-B3A8-1E826FC1B2CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUGETRef", "Basics\NUGETRef\NUGETRef.csproj", "{69F152CB-6F85-4F4A-B3A8-1E826FC1B2CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "Basics\OOP\OOP.csproj", "{48C4F215-B97E-42B2-9435-BE26DD48BEA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOP", "Basics\OOP\OOP.csproj", "{48C4F215-B97E-42B2-9435-BE26DD48BEA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SOLID", "SOLID", "{25A23DB2-B187-447F-BC3E-A44C7044C873}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerApp", "SOLID\CustomerApp\CustomerApp.csproj", "{E858C597-DFE3-47F4-93CF-3A8CF093B353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerApp", "SOLID\CustomerApp\CustomerApp.csproj", "{E858C597-DFE3-47F4-93CF-3A8CF093B353}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAppImplementation", "SOLID\CustomerAppImplementation\CustomerAppImplementation.csproj", "{F71069EA-1379-4961-BB17-3B65A1B68056}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAppImplementation", "SOLID\CustomerAppImplementation\CustomerAppImplementation.csproj", "{F71069EA-1379-4961-BB17-3B65A1B68056}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{A0D333B0-AA27-4FB8-A590-CB9B876B5DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.Library", "Testing\Car.Library\Car.Library.csproj", "{F0FD4D20-A4B4-4D74-A18D-0003F879D4E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car.Library", "Testing\Car.Library\Car.Library.csproj", "{F0FD4D20-A4B4-4D74-A18D-0003F879D4E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.MSTest", "Testing\Car.MSTest\Car.MSTest.csproj", "{4088ACA6-7913-4C15-8D40-1C4CBFA8C37E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car.MSTest", "Testing\Car.MSTest\Car.MSTest.csproj", "{4088ACA6-7913-4C15-8D40-1C4CBFA8C37E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.NUnit", "Testing\Car.NUnit\Car.NUnit.csproj", "{3744E605-EA88-427D-B132-C87D44658ED4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car.NUnit", "Testing\Car.NUnit\Car.NUnit.csproj", "{3744E605-EA88-427D-B132-C87D44658ED4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.XUnit", "Testing\Car.XUnit\Car.XUnit.csproj", "{CBD46EB0-3390-4B10-8E52-5727914AA8D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car.XUnit", "Testing\Car.XUnit\Car.XUnit.csproj", "{CBD46EB0-3390-4B10-8E52-5727914AA8D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarConsole", "Testing\CarConsole\CarConsole.csproj", "{8FC62F43-FCA0-4BDE-B2A1-6A49E287A142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarConsole", "Testing\CarConsole\CarConsole.csproj", "{8FC62F43-FCA0-4BDE-B2A1-6A49E287A142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarConsoleTest", "Testing\CarConsoleTest\CarConsoleTest.csproj", "{A65FD99A-94B3-4B84-9AB5-667DE47797F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarConsoleTest", "Testing\CarConsoleTest\CarConsoleTest.csproj", "{A65FD99A-94B3-4B84-9AB5-667DE47797F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSpecFlow", "Testing\CarSpecFlow\CarSpecFlow.csproj", "{670D544F-5A64-4DF5-8239-EB9E1487F283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSpecFlow", "Testing\CarSpecFlow\CarSpecFlow.csproj", "{670D544F-5A64-4DF5-8239-EB9E1487F283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSpecFlowProject", "Testing\CarSpecFlowProject\CarSpecFlowProject.csproj", "{E819AA4F-4817-447F-AA19-02D2F33FC447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSpecFlowProject", "Testing\CarSpecFlowProject\CarSpecFlowProject.csproj", "{E819AA4F-4817-447F-AA19-02D2F33FC447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowCalculator", "Testing\SpecFlowCalculator\SpecFlowCalculator.csproj", "{99926CB9-E2AF-4DA7-AAD3-6712163683C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowCalculator", "Testing\SpecFlowCalculator\SpecFlowCalculator.csproj", "{99926CB9-E2AF-4DA7-AAD3-6712163683C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowCalculator.Specs", "Testing\SpecFlowCalculator.Specs\SpecFlowCalculator.Specs.csproj", "{B9846F93-3DF5-498D-BDF2-AB1314D54D5E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowCalculator.Specs", "Testing\SpecFlowCalculator.Specs\SpecFlowCalculator.Specs.csproj", "{B9846F93-3DF5-498D-BDF2-AB1314D54D5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.CodeFirst", "EF\EF.CodeFirst\EF.CodeFirst.csproj", "{949AD8A1-4927-400D-A345-05DD6831DAFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,9 +69,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DD68D018-7426-4102-B89E-FB23D8781D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -372,6 +371,21 @@ Global
 		{B9846F93-3DF5-498D-BDF2-AB1314D54D5E}.Release|x64.Build.0 = Release|Any CPU
 		{B9846F93-3DF5-498D-BDF2-AB1314D54D5E}.Release|x86.ActiveCfg = Release|Any CPU
 		{B9846F93-3DF5-498D-BDF2-AB1314D54D5E}.Release|x86.Build.0 = Release|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Debug|x64.Build.0 = Debug|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Release|x64.ActiveCfg = Release|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Release|x64.Build.0 = Release|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{949AD8A1-4927-400D-A345-05DD6831DAFF}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DD68D018-7426-4102-B89E-FB23D8781D5B} = {364DCF26-243A-4FDE-8781-BE0BA8E5330A}
@@ -399,5 +413,8 @@ Global
 		{E819AA4F-4817-447F-AA19-02D2F33FC447} = {A0D333B0-AA27-4FB8-A590-CB9B876B5DEB}
 		{99926CB9-E2AF-4DA7-AAD3-6712163683C1} = {A0D333B0-AA27-4FB8-A590-CB9B876B5DEB}
 		{B9846F93-3DF5-498D-BDF2-AB1314D54D5E} = {A0D333B0-AA27-4FB8-A590-CB9B876B5DEB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB3670B0-C772-4C7C-B259-F5EA28276A02}
 	EndGlobalSection
 EndGlobal
