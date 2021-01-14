@@ -1,16 +1,16 @@
-﻿using EF.CodeFirst.Data;
-using EF.CodeFirst.Models.Binding;
-using EF.CodeFirst.Models.Entity;
+﻿using EF.DbFirst.Data;
+using EF.DbFirst.Models;
+using EF.DbFirst.Models.Binding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EF.CodeFirst.Services
+namespace EF.DbFirst.Services
 {
     public class CarServices
     {
-        private static ApplicationDbContext dbContext = new ApplicationDbContext();
+        private static CarsDBContext dbContext = new CarsDBContext();
 
         public static Car AddCar(AddCar addCar)
         {
