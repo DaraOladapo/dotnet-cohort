@@ -28,7 +28,6 @@ namespace CarsWebLibrary
                 new Car { ID=Guid.NewGuid(), Make = "Honda", Model = "CR-V", Year = 2019 },
                 new Car { ID=Guid.NewGuid(), Make = "Ford", Model = "Mustang Mach E", Year = 2020 },
                 new Car { ID=Guid.NewGuid(), Make = "Vauxhaul", Model = "Insigna", Year = 2020 },
-                new Car { ID=Guid.NewGuid(), Make = "Mercedez", Model = "Benz E-Class", Year = 2020 },
             };
         }
         public static Car GetCar(Guid guid)

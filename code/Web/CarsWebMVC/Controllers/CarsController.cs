@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarsWebMVC.Controllers
 {
+    [Route("[Controller]/[Action]")]
     public class CarsController : Controller
     {
         public IActionResult Index()
@@ -15,8 +16,25 @@ namespace CarsWebMVC.Controllers
             var cars = CarService.GetCars();
             return View(cars);
         }
-        [Route("details/{guid}")]
-        public IActionResult Details(Guid guid)
+        [Route("{guid}")]
+        public IActionResult Details([FromRoute] Guid guid)
+        {
+            var car = CarService.GetCar(guid);
+            return View(car);
+        }
+        [Route("{guid}")]
+        public IActionResult Edit(Guid guid)
+        {
+            var car = CarService.GetCar(guid);
+            return View(car);
+        }
+        [HttpPost("{guid}")]
+        public IActionResult Edit(Guid guid, [FromForm] UpdateCar updateCar)
+        {
+            return RedirectToAction("Index");
+        }
+        [Route("{guid}")]
+        public IActionResult Delete(Guid guid)
         {
             var car = CarService.GetCar(guid);
             return View(car);

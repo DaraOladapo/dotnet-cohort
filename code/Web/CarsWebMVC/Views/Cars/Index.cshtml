@@ -38,10 +38,9 @@
                     @Html.DisplayFor(modelItem => item.Year)
                 </td>
                 <td>
-                    <a href="@Url.Action("Details", "Cars", item.ID)">Details</a>
-                    @*@Html.ActionLink("Edit", "Edit", item.ID) |
-                        @Html.ActionLink("Details", "Details",  item.ID ) |
-                        @Html.ActionLink("Delete", "Delete", item.ID)*@
+                    <a href="~/cars/details/@item.ID">Details</a>|
+                    <a href="~/cars/edit/@item.ID">Edit</a> |
+                    <a href="~/cars/delete/@item.ID">Delete</a>
                 </td>
             </tr>
         }
