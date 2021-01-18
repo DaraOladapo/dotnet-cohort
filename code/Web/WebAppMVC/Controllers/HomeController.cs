@@ -9,6 +9,7 @@ using WebAppMVC.Models;
 
 namespace WebAppMVC.Controllers
 {
+    [Route("")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -22,12 +23,17 @@ namespace WebAppMVC.Controllers
         {
             return View();
         }
-
+        [Route("Privacy-Policy")]
         public IActionResult Privacy()
         {
             return View();
         }
-
+        [Route("About-Us")]
+        public IActionResult About()
+        {
+            return View();
+        }
+        [Route("Something-Bad")]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
