@@ -1,0 +1,49 @@
+﻿@model List<CarsWebLibrary.Car>
+
+@{
+    ViewData["Title"] = "All my Cars";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Make
+            </th>
+            <th>
+                Model
+            </th>
+            <th>
+                Year
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Make)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    <a href="@Url.Action("Details", "Cars", item.ID)">Details</a>
+                    @*@Html.ActionLink("Edit", "Edit", item.ID) |
+                        @Html.ActionLink("Details", "Details",  item.ID ) |
+                        @Html.ActionLink("Delete", "Delete", item.ID)*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
