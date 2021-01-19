@@ -28,11 +28,11 @@ namespace CarsWebMVC.Controllers
             var car = CarService.GetCar(guid);
             return View(car);
         }
-        [HttpPost("{guid}")]
-        public IActionResult Edit(Guid guid, [FromForm] UpdateCar updateCar)
-        {
-            return RedirectToAction("Index");
-        }
+        //[HttpPost("{guid}")]
+        //public IActionResult Edit(Guid guid, [FromForm] UpdateCar updateCar)
+        //{
+        //    return RedirectToAction("Index");
+        //}
         [Route("{guid}")]
         public IActionResult Delete(Guid guid)
         {
