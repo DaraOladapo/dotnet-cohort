@@ -1,5 +1,4 @@
 using CarsWebLibrary.Data;
-using CarsWebMVC.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -16,9 +15,11 @@ namespace CarsWebMVC
 {
     public class Startup
     {
+        //private readonly ApplicationDbContext dbContext;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            //dbContext = applicationDb;
         }
 
         public IConfiguration Configuration { get; }
@@ -27,13 +28,14 @@ namespace CarsWebMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b=>b.MigrationsAssembly("CarsWebMVC")));
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //dbContext.Database.Migrate();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

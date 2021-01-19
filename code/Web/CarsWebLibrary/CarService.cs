@@ -8,33 +8,27 @@ namespace CarsWebLibrary
 {
     public class CarService
     {
-        //ctor
-        private static ApplicationDbContext dbContext;
-        public CarService(ApplicationDbContext applicationDb)
-        {
-            dbContext = applicationDb;
-        }
         //C
-        public static Car AddCar(AddCar addCar)
+        public static Car AddCar(AddCar addCar, ApplicationDbContext dbContext)
         {
-            var carToAdd = new Car() { ID = Guid.NewGuid(), Make = addCar.Make, Model = addCar.Model, Year = addCar.Year };
+            var carToAdd = new Car() { Make = addCar.Make, Model = addCar.Model, Year = addCar.Year };
             var addedCar = dbContext.Cars.Add(carToAdd).Entity;
             dbContext.SaveChanges();
             return addedCar;
         }
         //R
-        public static List<Car> GetCars()
+        public static List<Car> GetCars( ApplicationDbContext dbContext)
         {
             var cars = dbContext.Cars.ToList();
             return cars;
         }
-        public static Car GetCar(Guid guid)
+        public static Car GetCar(Guid guid, ApplicationDbContext dbContext)
         {
             var carFound = dbContext.Cars.FirstOrDefault(c => c.ID == guid);
             return carFound;
         }
         //U
-        public static Car UpdateCar(UpdateCar updateCar, Guid guid)
+        public static Car UpdateCar(UpdateCar updateCar, Guid guid, ApplicationDbContext dbContext)
         {
             var carToUpdate = dbContext.Cars.FirstOrDefault(c => c.ID == guid);
             carToUpdate.Make = updateCar.Make;
@@ -44,12 +38,12 @@ namespace CarsWebLibrary
             return carToUpdate;
         }
         //D
-        public static string DeleteCar(Guid guid)
+        public static void DeleteCar(Guid guid, ApplicationDbContext dbContext)
         {
             var carToDelete = dbContext.Cars.FirstOrDefault(c => c.ID == guid);
             dbContext.Cars.Remove(carToDelete);
             dbContext.SaveChanges();
-            return ($"Item with ID: {guid} deleted.");
+            //return ($"Item with ID: {guid} deleted.");
         }
     }
 }

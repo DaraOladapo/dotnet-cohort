@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarsWebMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210119092534_IntialMigration")]
-    partial class IntialMigration
+    [Migration("20210119110122_DbGen")]
+    partial class DbGen
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
