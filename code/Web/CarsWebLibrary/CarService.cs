@@ -38,12 +38,12 @@ namespace CarsWebLibrary
             return carToUpdate;
         }
         //D
-        public static void DeleteCar(Guid guid, ApplicationDbContext dbContext)
+        public static string DeleteCar(Guid guid, ApplicationDbContext dbContext)
         {
             var carToDelete = dbContext.Cars.FirstOrDefault(c => c.ID == guid);
             dbContext.Cars.Remove(carToDelete);
             dbContext.SaveChanges();
-            //return ($"Item with ID: {guid} deleted.");
+            return ($"Car with ID: {guid} deleted.");
         }
     }
 }

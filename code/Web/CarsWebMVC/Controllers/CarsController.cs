@@ -50,8 +50,13 @@ namespace CarsWebMVC.Controllers
         [HttpPost("{guid}")]
         public IActionResult Edit(Guid guid, [FromForm] UpdateCar updateCar)
         {
-            var updatedCar = CarService.UpdateCar(updateCar, guid, dbContext);
-            return RedirectToAction("Details", updatedCar);
+            if (ModelState.IsValid)
+            {
+                var updatedCar = CarService.UpdateCar(updateCar, guid, dbContext);
+                return RedirectToAction("Details", updatedCar);
+            }
+            return BadRequest("We think you did something really bad. Try again another");
+
         }
         //D
         [Route("{guid}")]
