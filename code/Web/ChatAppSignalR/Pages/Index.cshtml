@@ -1,0 +1,62 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "BAE Chat App";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BAE Chat App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form>
+                    <div class="form-group">
+                        <label for="userInput">User</label>
+                        <input type="text" class="form-control" id="userInput" aria-describedby="userHelp" placeholder="Enter User">
+                    </div>
+                    <div class="form-group">
+                        <label for="messageInput">Message</label>
+                        <input type="text" class="form-control" id="messageInput" aria-describedby="messageHelp" placeholder="Enter Message">
+                    </div>
+                    <button type="button" id="sendButton" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <ul id="messagesList"></ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/lib/signalr.js"></script>
+<script>
+    //declare connection to signalR
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chathub")
+        .configureLogging(signalR.LogLevel.Trace)
+        .build();
+
+    //upon receipt of message
+    connection.on("ReceiveMessage", (user, message) => {
+        const li = document.createElement("li");
+        li.textContent = user + ": " + message;
+        document.getElementById("messagesList").appendChild(li);
+    });
+
+    //connect and catch connection error
+    connection.start().catch(err => console.error(err.ToString()));
+
+    //on sending message, notify all connections
+    document.getElementById("sendButton").addEventListener("click", event => {
+        const user = document.getElementById("userInput").value;
+        const message = document.getElementById("messageInput").value;
+        connection.invoke("SendMessage", user, message).catch(err => console.error(err.toString()));
+        event.preventDefault();
+    });
+</script>
