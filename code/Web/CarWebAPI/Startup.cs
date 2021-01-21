@@ -35,6 +35,7 @@ namespace CarWebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarWebAPI", Version = "v1" });
             });
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,8 +47,8 @@ namespace CarWebAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CarWebAPI v1"));
             }
-
-            app.UseHttpsRedirection();
+            //app.UseDeveloperExceptionPage();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

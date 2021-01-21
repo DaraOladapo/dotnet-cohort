@@ -2,9 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>79400775-c8e6-434d-b438-05f011682633</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/d2e7863c-eaac-47a3-b0c4-1ea059825460/resourcegroups/CarWebAPIResourceGroup/providers/Microsoft.Insights/components/CarWebAPI</ApplicationInsightsResourceId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.15.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.2">
       <PrivateAssets>all</PrivateAssets>

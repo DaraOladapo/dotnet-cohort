@@ -1,0 +1,110 @@
+﻿<Window x:Class="CarDesktopApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarDesktopApp"
+        mc:Ignorable="d"
+        Title="My Garage" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Background="White">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <!--Add Operation-->
+        <StackPanel Margin="4,4,4,4">
+            <!--L,T,R,B-->
+            <Label Content="Add Car"/>
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Name: " Grid.Column="0"/>
+                <TextBox Name="AddCarMakeTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
+            </Grid>
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Model: " Grid.Column="0"/>
+                <TextBox Name="AddCarModelTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
+            </Grid>
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Year: " Grid.Column="0"/>
+                <TextBox Name="AddCarYearTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
+            </Grid>
+            <Button x:Name="AddCarButton" Content="Add Car" Margin="4"/>
+        </StackPanel>
+        <!--View all cars operation-->
+        <ListView x:Name="CarsListView" Grid.Row="1" Grid.Column="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding ID}"/>
+                        <TextBlock Text="{Binding Make}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <!--View Car Details-->
+        <StackPanel Grid.RowSpan="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Make"/>
+            <TextBlock Name="CarMake"/>
+            <TextBlock Text="Model"/>
+            <TextBlock Name="CarModel"/>
+            <TextBlock Text="Year"/>
+            <TextBlock Name="CarYear"/>
+        </StackPanel>
+        <!--Update Operations-->
+        <StackPanel Margin="4,4,4,4" Grid.Column="2" Grid.Row="0" Name="UpdateStackPanel" Visibility="Hidden">
+            <!--L,T,R,B-->
+            <Label Content="Update Car"/>
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Name: " Grid.Column="0"/>
+                <TextBox Name="UpdateCarMakeTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
+            </Grid>
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Model: " Grid.Column="0"/>
+                <TextBox Name="UpdateCarModelTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
+            </Grid>
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Year: " Grid.Column="0"/>
+                <TextBox Name="UpdateCarYearTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
+            </Grid>
+            <Button x:Name="UpdateCarButton" Content="Update Car" Margin="4"/>
+        </StackPanel>
+        <!--Actions Operations-->
+        <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="4" Name="ActionPanel" Visibility="Hidden">
+            <Button Content="Update" Margin="4"/>
+            <Button Content="Delete" Style="{StaticResource DangerButtonStyle}"/>
+            <StackPanel Name="DeleteConfirmationStackPanel" Visibility="Hidden">
+                <Label>Do you really want to delete this item?</Label>
+                <Button Content="Yes, Delete" Style="{StaticResource DangerButtonStyle}"/>
+                <Button Content="No, Cancel" Margin="4"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
