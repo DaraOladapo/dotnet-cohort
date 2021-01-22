@@ -19,7 +19,7 @@
         <!--Add Operation-->
         <StackPanel Margin="4,4,4,4">
             <!--L,T,R,B-->
-            <Label Content="Add Car"/>
+            <Label Content="Add Car" FontFamily="{StaticResource BrandFont}"/>
             <Grid Margin="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -44,10 +44,10 @@
                 <Label Content="Year: " Grid.Column="0"/>
                 <TextBox Name="AddCarYearTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
             </Grid>
-            <Button x:Name="AddCarButton" Content="Add Car" Margin="4"/>
+            <Button x:Name="AddCarButton" Content="Add Car" Margin="4" Click="AddCarButton_Click"/>
         </StackPanel>
         <!--View all cars operation-->
-        <ListView x:Name="CarsListView" Grid.Row="1" Grid.Column="0">
+        <ListView x:Name="CarsListView" Grid.Row="1" Grid.Column="0" SelectionChanged="CarsListView_SelectionChanged" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -94,16 +94,17 @@
                 <Label Content="Year: " Grid.Column="0"/>
                 <TextBox Name="UpdateCarYearTextBox" HorizontalAlignment="Stretch" Grid.Column="1"/>
             </Grid>
-            <Button x:Name="UpdateCarButton" Content="Update Car" Margin="4"/>
+            <Button x:Name="UpdateCarButton" Content="Update Car" Margin="4" Click="UpdateCarButton_Click"/>
+            <Button x:Name="CancelUpdateButton" Content="Cancel Update" Margin="4" Click="CancelUpdateButton_Click"/>
         </StackPanel>
         <!--Actions Operations-->
         <StackPanel Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" Margin="4" Name="ActionPanel" Visibility="Hidden">
-            <Button Content="Update" Margin="4"/>
-            <Button Content="Delete" Style="{StaticResource DangerButtonStyle}"/>
+            <Button Content="Update" Margin="4" Name="UpdateActionButton" Click="UpdateActionButton_Click"/>
+            <Button Content="Delete" Style="{StaticResource DangerButtonStyle}" Name="DeleteActionButton" Click="DeleteActionButton_Click"/>
             <StackPanel Name="DeleteConfirmationStackPanel" Visibility="Hidden">
                 <Label>Do you really want to delete this item?</Label>
-                <Button Content="Yes, Delete" Style="{StaticResource DangerButtonStyle}"/>
-                <Button Content="No, Cancel" Margin="4"/>
+                <Button Content="Yes, Delete" Style="{StaticResource DangerButtonStyle}" Click="ConfirmDelete_Click"/>
+                <Button Content="No, Cancel" Margin="4" Click="CancelDeleteAction_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>
