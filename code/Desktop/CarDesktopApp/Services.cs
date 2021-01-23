@@ -38,10 +38,10 @@ namespace CarDesktopApp
             var updateCarUrl = $"{BaseUrl}/{id}";
             using (HttpClient httpClient = new HttpClient())
             {
-                var url = new Uri(updateCarUrl);
+                //var url = new Uri(updateCarUrl);
                 string jsonTranport = JsonConvert.SerializeObject(carUpdateModel);
                 var jsonPayload = new StringContent(jsonTranport, Encoding.UTF8, "application/json");
-                var updateCarResponse = await httpClient.PutAsync(url, jsonPayload);
+                var updateCarResponse = await httpClient.PutAsync(updateCarUrl, jsonPayload);
                 var responseContent = await updateCarResponse.Content.ReadAsStringAsync();
                 var updatedCar = JsonConvert.DeserializeObject<Car>(responseContent);
                 return updatedCar;
