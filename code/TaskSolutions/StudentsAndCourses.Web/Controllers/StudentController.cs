@@ -121,7 +121,7 @@ namespace StudentsAndCourses.Web.Controllers
             dbContext.Remove(studentToDelete);
             dbContext.SaveChanges();
             _logger.LogCritical($"deleting {studentToDelete.Name} completed");
-            return Ok("Student deleted");
+            return NoContent();
         }
 
         [HttpPost("{id}/addcourse")]
