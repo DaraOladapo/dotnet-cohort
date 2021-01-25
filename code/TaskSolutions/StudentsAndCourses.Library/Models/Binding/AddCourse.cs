@@ -1,4 +1,4 @@
-﻿namespace StudentsAndScores.Library.Models.Binding
+﻿namespace StudentsAndCourses.Library.Models.Binding
 {
     public class AddCourse
     {

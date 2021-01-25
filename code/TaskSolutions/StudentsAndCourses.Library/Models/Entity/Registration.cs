@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsAndScores.Library.Models.Entity
+namespace StudentsAndCourses.Library.Models.Entity
 {
     public class Registration
     {

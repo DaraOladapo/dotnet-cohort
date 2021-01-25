@@ -99,7 +99,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsAndCourses.WPF", "T
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsAndCourses.Web", "TaskSolutions\StudentsAndCourses.Web\StudentsAndCourses.Web.csproj", "{6263EBB4-49D5-4231-B55B-6B69AEBD20AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsAndScores.Library", "TaskSolutions\StudentsAndScores.Library\StudentsAndScores.Library.csproj", "{588701E3-3435-473D-AE49-39B58E78827C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentsAndCourses.Library", "TaskSolutions\StudentsAndCourses.Library\StudentsAndCourses.Library.csproj", "{588701E3-3435-473D-AE49-39B58E78827C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StudentsAndScores.Library.Models.Entity;
+using StudentsAndCourses.Library.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace StudentsAndScores.Library.Data
+namespace StudentsAndCourses.Library.Data
 {
     public class ApplicationDbContext : DbContext
     {

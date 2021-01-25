@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace StudentsAndScores.Library.Utility
+namespace StudentsAndCourses.Library.Utility
 {
     public static class EmailUtility
     {

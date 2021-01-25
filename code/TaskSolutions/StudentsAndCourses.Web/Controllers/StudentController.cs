@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using StudentsAndScores.Library.Data;
-using StudentsAndScores.Library.Models.Binding;
-using StudentsAndScores.Library.Models.Entity;
-using StudentsAndScores.Library.Models.ViewModels;
-using StudentsAndScores.Library.Utility;
+using StudentsAndCourses.Library.Data;
+using StudentsAndCourses.Library.Models.Binding;
+using StudentsAndCourses.Library.Models.Entity;
+using StudentsAndCourses.Library.Models.ViewModels;
+using StudentsAndCourses.Library.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using StudentsAndScores.Library.Data;
+using StudentsAndCourses.Library.Data;
 
 namespace StudentsAndCourses.Web.Migrations
 {
@@ -19,7 +19,7 @@ namespace StudentsAndCourses.Web.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("StudentsAndScores.Library.Models.Entity.Course", b =>
+            modelBuilder.Entity("StudentsAndCourses.Library.Models.Entity.Course", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace StudentsAndCourses.Web.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("StudentsAndScores.Library.Models.Entity.Registration", b =>
+            modelBuilder.Entity("StudentsAndCourses.Library.Models.Entity.Registration", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace StudentsAndCourses.Web.Migrations
                     b.ToTable("Registrations");
                 });
 
-            modelBuilder.Entity("StudentsAndScores.Library.Models.Entity.Student", b =>
+            modelBuilder.Entity("StudentsAndCourses.Library.Models.Entity.Student", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -77,13 +77,13 @@ namespace StudentsAndCourses.Web.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("StudentsAndScores.Library.Models.Entity.Registration", b =>
+            modelBuilder.Entity("StudentsAndCourses.Library.Models.Entity.Registration", b =>
                 {
-                    b.HasOne("StudentsAndScores.Library.Models.Entity.Course", "Course")
+                    b.HasOne("StudentsAndCourses.Library.Models.Entity.Course", "Course")
                         .WithMany()
                         .HasForeignKey("CourseId");
 
-                    b.HasOne("StudentsAndScores.Library.Models.Entity.Student", "Student")
+                    b.HasOne("StudentsAndCourses.Library.Models.Entity.Student", "Student")
                         .WithMany()
                         .HasForeignKey("StudentId");
 
