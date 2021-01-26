@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StudentsAndCourses.Library.Data;
+using StudentsAndCourses.Library.Interfaces;
 using StudentsAndCourses.Library.Models.Binding;
 using StudentsAndCourses.Library.Models.Entity;
 using StudentsAndCourses.Library.Models.ViewModels;
@@ -20,16 +21,20 @@ namespace StudentsAndCourses.Web.Controllers
     {
         private ILogger<StudentController> _logger;
         private ApplicationDbContext dbContext;
-        public StudentController(ILogger<StudentController> logger, ApplicationDbContext applicationDb)
+        private IRepositoryWrapper repository;
+        public StudentController(ILogger<StudentController> logger, ApplicationDbContext applicationDb, IRepositoryWrapper repositoryWrapper)
         {
             _logger = logger;
             dbContext = applicationDb;
+            repository = repositoryWrapper;
         }
         // GET: api/<StudentController>
         [HttpGet]
         public IEnumerable<StudentViewModel> Get()
         {
             var allStudents = dbContext.Students.ToList();
+            var allCourses = dbContext.Courses.ToList();
+            //var allRegistrations = new List<Registration>();
             var allRegistrations = dbContext.Registrations.ToList();
             List<StudentViewModel> studentViewModels = new List<StudentViewModel>();
             foreach (var student in allStudents)
@@ -59,7 +64,20 @@ namespace StudentsAndCourses.Web.Controllers
             var studentFoundViewModel = new StudentViewModel { Student = studentFound, Registrations = studentCourses };
             return studentFoundViewModel;
         }
-
+        [HttpGet("{id}/courses")]
+        public ActionResult<List<Course>> GetCoursesByStudent(int id)
+        {
+            var student = repository.Students.FindByCondition(s => s.Id == id).FirstOrDefault();
+            var studentViewModel = new StudentViewModel() { Student = student };
+            var allRegistrations = repository.Registrations.FindAll().ToList();
+            var allCourses = repository.Courses.FindAll();
+            var studentMatchingCourseQuery = allRegistrations
+                .Join(allCourses, r => r.CourseId, c => c.Id, (allRegistrations, allCourses) =>  
+                new Course { Id = allCourses.Id, Code = allCourses.Code, Title = allCourses.Title } );
+            var studentCourses = studentMatchingCourseQuery.ToList();
+            studentViewModel.Registrations = studentCourses;
+            return studentViewModel.Registrations;
+        }
         // POST api/<StudentController>
         [HttpPost]
         public ActionResult<StudentViewModel> Post([FromBody] AddStudent student)
@@ -74,7 +92,7 @@ namespace StudentsAndCourses.Web.Controllers
                 return BadRequest("student name is empty");
             if (!student.EmailAddress.IsValidEmail())
                 return BadRequest("Invalid Email address");
-            var addedStudent = dbContext.Add(new Student { Name = student.Name, EmailAddress = student.EmailAddress }).Entity;
+            var addedStudent = dbContext.Students.Add(new Student { Name = student.Name, EmailAddress = student.EmailAddress }).Entity;
             dbContext.SaveChanges();
             return new StudentViewModel { Student = addedStudent, Registrations = new List<Course>() };
         }
