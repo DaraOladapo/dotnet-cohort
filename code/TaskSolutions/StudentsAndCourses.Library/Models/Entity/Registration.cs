@@ -7,7 +7,7 @@ namespace StudentsAndCourses.Library.Models.Entity
     public class Registration
     {
         public int Id { get; set; }
-        public Course Course { get; set; }
-        public Student Student { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

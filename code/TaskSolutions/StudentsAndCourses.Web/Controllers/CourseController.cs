@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using StudentsAndCourses.Library.Models.Entity;
 using StudentsAndCourses.Library.Models.ViewModels;
 using StudentsAndCourses.Library.Models.Binding;
+using StudentsAndCourses.Library.Interfaces;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,18 +19,17 @@ namespace StudentsAndCourses.Web.Controllers
     public class CourseController : ControllerBase
     {
         private ILogger<CourseController> _logger;
-        private ApplicationDbContext dbContext;
-        public CourseController(ILogger<CourseController> logger, ApplicationDbContext applicationDb)
+        private IRepositoryWrapper repository;
+        public CourseController(ILogger<CourseController> logger,IRepositoryWrapper repositoryWrapper)
         {
             _logger = logger;
-            dbContext = applicationDb;
+            repository = repositoryWrapper;
         }
         // GET: api/<CourseController>
         [HttpGet]
         public IEnumerable<CourseViewModel> Get()
         {
-            var allCourses = dbContext.Courses.ToList();
-            var allRegistrations = dbContext.Registrations.ToList();
+            var allCourses = repository.Courses.FindAll();
             List<CourseViewModel> courseViewModels = new List<CourseViewModel>();
             foreach (var course in allCourses)
             {
@@ -37,7 +37,8 @@ namespace StudentsAndCourses.Web.Controllers
             }
             foreach (var courseViewModel in courseViewModels)
             {
-                courseViewModel.Students = allRegistrations.Where(c => c.Course.Id == courseViewModel.Course.Id).Select(c => c.Student).ToList();
+                var courseRegistations = repository.Registrations.FindByCondition(r=>r.Course.Id==courseViewModel.Course.Id).ToList();
+                courseViewModel.Students = courseRegistations.Select(c => c.Student).ToList();
             }
             _logger.LogInformation($"{courseViewModels.Count} Courses gotten.");
             return courseViewModels;
@@ -47,14 +48,16 @@ namespace StudentsAndCourses.Web.Controllers
         [HttpGet("{id}")]
         public ActionResult<CourseViewModel> Get(int id)
         {
-            var courseFound = dbContext.Courses.FirstOrDefault(c => c.Id == id);
+            var courseFound = repository.Courses.FindByCondition(c => c.Id == id).FirstOrDefault();
+            //var courseFound = dbContext.Courses.FirstOrDefault(c => c.Id == id);
             if (courseFound == null)
             {
                 _logger.LogWarning($"Course with ID {id} not found.");
                 return NotFound($"Course with ID {id} not found.");
             }
             _logger.LogInformation($"Course with id {id} gotten");
-            var students = dbContext.Registrations.Where(c => c.Course.Id == id).Select(c => c.Student).ToList();
+            var students = repository.Registrations.FindByCondition(c => c.Course.Id == id).Select(c => c.Student).ToList();
+            //var students = dbContext.Registrations.Where(c => c.Course.Id == id).Select(c => c.Student).ToList();
             var courseFoundViewModel = new CourseViewModel { Course = courseFound, Students = students };
             return courseFoundViewModel;
         }
@@ -63,7 +66,8 @@ namespace StudentsAndCourses.Web.Controllers
         [HttpPost]
         public ActionResult<CourseViewModel> Post([FromBody] AddCourse course)
         {
-            var existingCourse = dbContext.Courses.FirstOrDefault(c => c.Code == course.Code && c.Title == course.Title);
+            var existingCourse = repository.Courses.FindByCondition(c => c.Code == course.Code && c.Title == course.Title).FirstOrDefault();
+            //var existingCourse = dbContext.Courses.FirstOrDefault(c => c.Code == course.Code && c.Title == course.Title);
             if (existingCourse != null)
             {
                 _logger.LogError("Data conflict");
@@ -73,8 +77,11 @@ namespace StudentsAndCourses.Web.Controllers
                 return BadRequest("Course title is empty");
             if (string.IsNullOrEmpty(course.Code))
                 return BadRequest("Course code is empty");
-            var addedCourse = dbContext.Add(new Course { Code = course.Code, Title = course.Title }).Entity;
-            dbContext.SaveChanges();
+            var addedCourse = repository.Courses.Create(new Course { Code = course.Code, Title = course.Title });
+            //var addedCourse = dbContext.Courses.Add(new Course { Code = course.Code, Title = course.Title }).Entity;
+            //var addedCourse = dbContext.Courses.Add(new Course { Code = course.Code, Title = course.Title }).Entity;
+            repository.Save();
+            //dbContext.SaveChanges();
             return new CourseViewModel { Course = addedCourse, Students = new List<Student>() };
         }
 
@@ -82,7 +89,7 @@ namespace StudentsAndCourses.Web.Controllers
         [HttpPut("{id}")]
         public ActionResult<CourseViewModel> Put(int id, [FromBody] UpdateCourse course)
         {
-            var courseToUpdate = dbContext.Courses.FirstOrDefault(c => c.Id == id);
+            var courseToUpdate = repository.Courses.FindByCondition(c => c.Id == id).FirstOrDefault();
             if (courseToUpdate == null)
             {
                 _logger.LogWarning($"Course with ID {id} not found.");
@@ -94,8 +101,8 @@ namespace StudentsAndCourses.Web.Controllers
                 return BadRequest("Course code is empty");
             courseToUpdate.Code = course.Code;
             courseToUpdate.Title = course.Title;
-            dbContext.SaveChanges();
-            var studentsInCourse = dbContext.Registrations.Where(c => c.Course.Id == id).Select(c => c.Student).ToList();
+            repository.Save();
+            var studentsInCourse = repository.Registrations.FindByCondition(c => c.Course.Id == id).Select(c => c.Student).ToList();
             var courseFoundViewModel = new CourseViewModel { Course = courseToUpdate, Students = studentsInCourse };
             return courseFoundViewModel;
         }
@@ -104,21 +111,21 @@ namespace StudentsAndCourses.Web.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var courseToDelete = dbContext.Courses.FirstOrDefault(c => c.Id == id);
+            var courseToDelete = repository.Courses.FindByCondition(c => c.Id == id).FirstOrDefault();
             if (courseToDelete == null)
             {
                 _logger.LogWarning($"Course with ID {id} not found.");
                 return NotFound($"Course with ID {id} not found.");
             }
-            var coursesToDelete = dbContext.Registrations.Where(c => c.Course.Id == id);
+            var coursesToDelete = repository.Registrations.FindByCondition(c => c.Course.Id == id);
             foreach (var course in coursesToDelete)
             {
-                dbContext.Registrations.Remove(course);
-                dbContext.SaveChanges();
+                repository.Registrations.Delete(course);
+                repository.Save();
             }
             _logger.LogCritical($"deleting course registration for {courseToDelete.Code} completed");
-            dbContext.Remove(courseToDelete);
-            dbContext.SaveChanges();
+            repository.Courses.Delete(courseToDelete);
+            repository.Save();
             _logger.LogCritical($"deleting {courseToDelete.Code} completed");
             return Ok("Course deleted");
         }

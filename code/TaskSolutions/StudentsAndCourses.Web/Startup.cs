@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using StudentsAndCourses.Library.Data;
+using StudentsAndCourses.Library.Interfaces;
+using StudentsAndCourses.Library.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +36,7 @@ namespace StudentsAndCourses.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "StudentsAndCourses.Web", Version = "v1" });
             });
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
             b => b.MigrationsAssembly("StudentsAndCourses.Web")));
