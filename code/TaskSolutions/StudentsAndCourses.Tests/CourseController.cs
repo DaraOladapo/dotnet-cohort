@@ -82,6 +82,17 @@ namespace StudentsAndCourses.Tests
             Assert.NotNull(controllerActionResult);
             Assert.IsType<ActionResult<CourseViewModel>>(controllerActionResult);
         }
+        [Fact]
+        public void DeleteCourse_Test()
+        {
+            //Arrange
+            mockRepo.Setup(repo => repo.Courses.FindByCondition(r => r.Id == It.IsAny<int>())).Returns(GetCourses());
+            mockRepo.Setup(repo => repo.Courses.Delete(GetCourse()));
+            //Act
+            var controllerActionResult = courseController.Delete(It.IsAny<int>());
+            //Assert
+            Assert.NotNull(controllerActionResult);
+        }
         private IEnumerable<Registration> GetRegistrations()
         {
             return new List<Registration>() {
